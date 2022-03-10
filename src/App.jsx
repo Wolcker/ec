@@ -1,9 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import articles from "./components/data/articles.json";
 import Table from "./components/common/Table";
+import SearchBar from "./components/common/SearchBar";
 
-function app() {
-  console.log(articles);
+function App() {
+  const [search, setSearch] = useState("");
+  const [articles, setArticles] = useState([]);
+
+  useEffect(() => {
+    loadArticles();
+  }, []);
+
+  const loadArticles = async () => {
+    const data = await articles;
+    setArticles(data);
+  };
+
+  const handleSearch = (data) => {
+    setSearch(data);
+    const filtered = articles.filter((article) =>
+      article.title.toLowerCase().include(search.toLowerCase())
+    );
+    setArticles(filtered);
+  };
+
+  console.log(search);
 
   const columns = [
     {
@@ -32,7 +53,12 @@ function app() {
     },
   ];
 
-  return <Table columns={columns} data={articles} />;
+  return (
+    <>
+      <SearchBar value={search} onChange={handleSearch} />
+      <Table columns={columns} data={articles} />
+    </>
+  );
 }
 
-export default app;
+export default App;
