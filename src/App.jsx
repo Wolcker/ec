@@ -1,32 +1,13 @@
-import React, { useEffect, useState } from "react";
-import originalArticles from "./components/data/articles.json";
+import React, { useState } from "react";
+import articles from "./articles.json";
 import Table from "./components/common/Table";
 import SearchBar from "./components/common/SearchBar";
 
 function App() {
   const [search, setSearch] = useState("");
-  const [articles, setArticles] = useState([]);
 
-  useEffect(() => {
-    loadArticles();
-  }, []);
-
-  const loadArticles = () => {
-    const data = originalArticles;
-    setArticles(data);
-  };
-
-  const handleSearch = (data) => {
-    setSearch(data);
-    console.log(data);
-    if (!data) {
-      loadArticles();
-    }
-    const searchedArticles = articles.filter((article) =>
-      article.title.toLowerCase().includes(data.toLowerCase())
-    );
-    setArticles(searchedArticles);
-    return articles;
+  const handleSeach = (Query) => {
+    setSearch(Query);
   };
 
   const columns = [
@@ -56,10 +37,14 @@ function App() {
     },
   ];
 
+  const searchedArticles = articles.filter((article) =>
+    article.title.toLowerCase().includes(search.toLowerCase())
+  );
+
   return (
     <>
-      <SearchBar value={search} onChange={handleSearch} />
-      <Table columns={columns} data={articles} />
+      <SearchBar value={search} onChange={handleSeach} />
+      <Table columns={columns} data={searchedArticles} />
     </>
   );
 }
