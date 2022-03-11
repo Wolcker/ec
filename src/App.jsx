@@ -28,10 +28,6 @@ function App() {
       path: "price_campaign",
     },
     {
-      label: "Link",
-      path: "url",
-    },
-    {
       label: "Category",
       path: "category",
     },

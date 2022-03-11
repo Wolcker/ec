@@ -1,6 +1,8 @@
+import { THead } from "../Styled/StyledTable";
+
 function THeader({ columns }) {
   return (
-    <thead>
+    <THead>
       <tr>
         {columns.map((column) => (
           <th style={{ cursor: "pointer" }} key={column.path || column.key}>
@@ -8,7 +10,7 @@ function THeader({ columns }) {
           </th>
         ))}
       </tr>
-    </thead>
+    </THead>
   );
 }
 
