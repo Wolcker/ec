@@ -14,6 +14,8 @@ const SearchBar = ({ value, onChange }) => {
 
 export default SearchBar;
 
+// The CSS for this component
+
 const Input = styled.input`
   width: 97%;
   padding: 12px 20px;

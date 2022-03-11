@@ -1,5 +1,6 @@
 import { THead } from "../Styled/StyledTable";
 
+// Renders a tableheader based on your column.
 function THeader({ columns }) {
   return (
     <THead>

@@ -7,9 +7,11 @@ function App() {
   const [search, setSearch] = useState("");
 
   const handleSeach = (Query) => {
+    // Adds what you type in search to search state.
     setSearch(Query);
   };
 
+  // Colums builds the table stucture. You can show less or add more paths in the columns.
   const columns = [
     {
       label: "Title",
@@ -33,10 +35,12 @@ function App() {
     },
   ];
 
+  //Filters the articles by the search word you are typing
   const searchedArticles = articles.filter((article) =>
     article.title.toLowerCase().includes(search.toLowerCase())
   );
 
+  // Both Table and SearchBar are common components and easly reusable.
   return (
     <>
       <SearchBar value={search} onChange={handleSeach} />
