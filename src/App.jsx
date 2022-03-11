@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import articles from "./components/data/articles.json";
+import originalArticles from "./components/data/articles.json";
 import Table from "./components/common/Table";
 import SearchBar from "./components/common/SearchBar";
 
@@ -11,15 +11,15 @@ function App() {
     loadArticles();
   }, []);
 
-  const loadArticles = async () => {
-    const data = await articles;
+  const loadArticles = () => {
+    const data = originalArticles;
     setArticles(data);
   };
 
   const handleSearch = (data) => {
     setSearch(data);
     const filtered = articles.filter((article) =>
-      article.title.toLowerCase().include(search.toLowerCase())
+      article.title.toLowerCase().include(data.toLowerCase())
     );
     setArticles(filtered);
   };
