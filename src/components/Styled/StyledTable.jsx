@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+// Style file to for every table.
+
 export const Table = styled.table`
   border: 1px solid black;
   border-collapse: collapse;
