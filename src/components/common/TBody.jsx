@@ -14,7 +14,7 @@ function TBody({ data, columns }) {
   return (
     <tbody>
       {data.map((item) => (
-        <tr key={item._id}>
+        <tr key={item.title}>
           {columns.map((column) => (
             <td key={createKey(item, column)}>{renderCell(item, column)}</td>
           ))}

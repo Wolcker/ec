@@ -1,9 +1,14 @@
-import React from "react";
-import articles from "./components/data/articles.json";
+import React, { useState } from "react";
+import articles from "./articles.json";
 import Table from "./components/common/Table";
+import SearchBar from "./components/common/SearchBar";
 
-function app() {
-  console.log(articles);
+function App() {
+  const [search, setSearch] = useState("");
+
+  const handleSeach = (Query) => {
+    setSearch(Query);
+  };
 
   const columns = [
     {
@@ -32,7 +37,16 @@ function app() {
     },
   ];
 
-  return <Table columns={columns} data={articles} />;
+  const searchedArticles = articles.filter((article) =>
+    article.title.toLowerCase().includes(search.toLowerCase())
+  );
+
+  return (
+    <>
+      <SearchBar value={search} onChange={handleSeach} />
+      <Table columns={columns} data={searchedArticles} />
+    </>
+  );
 }
 
-export default app;
+export default App;
