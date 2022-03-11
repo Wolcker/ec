@@ -31,9 +31,7 @@ export const TBody = styled.tbody`
     border: 1px solid black;
   }
 
-  tr {
-    tr:nth-child(even) {
-      background-color: #f2f2f2;
-    }
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
   }
 `;
