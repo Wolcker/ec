@@ -18,13 +18,16 @@ function App() {
 
   const handleSearch = (data) => {
     setSearch(data);
-    const filtered = articles.filter((article) =>
-      article.title.toLowerCase().include(data.toLowerCase())
+    console.log(data);
+    if (!data) {
+      loadArticles();
+    }
+    const searchedArticles = articles.filter((article) =>
+      article.title.toLowerCase().includes(data.toLowerCase())
     );
-    setArticles(filtered);
+    setArticles(searchedArticles);
+    return articles;
   };
-
-  console.log(search);
 
   const columns = [
     {
