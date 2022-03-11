@@ -1,4 +1,5 @@
 import _ from "lodash";
+import { TBody as TableBody } from "../Styled/StyledTable";
 
 function TBody({ data, columns }) {
   const renderCell = (item, column) => {
@@ -12,7 +13,7 @@ function TBody({ data, columns }) {
   };
 
   return (
-    <tbody>
+    <TableBody>
       {data.map((item) => (
         <tr key={item.title}>
           {columns.map((column) => (
@@ -20,7 +21,7 @@ function TBody({ data, columns }) {
           ))}
         </tr>
       ))}
-    </tbody>
+    </TableBody>
   );
 }
 
